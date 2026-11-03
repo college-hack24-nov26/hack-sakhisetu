@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+:root {
+  --color-shg-primary: #80141c;       /* Deep Kumkum / Terracotta Red */
+  --color-shg-primary-hover: #5d0c12;
+  --color-shg-dark: #1c1917;
+  --color-shg-surface: #ffffff;
+  --color-shg-yellow: #f59e0b;      /* High visibility turmeric warning */
+  --color-shg-green: #14532d;       /* Forest green confirm button */
+  --color-shg-green-active: #166534;
+}
+
+body {
+  font-family: 'Noto Sans Devanagari', 'Plus Jakarta Sans', system-ui, sans-serif;
+  color: var(--color-shg-dark);
+  background-color: #faf7f2;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+@media (max-width: 640px) {
+  input,
+  select,
+  textarea {
+    font-size: 16px;
+  }
+}
+
+/* Touch targets strictly >= 48px to 56px for rural accessibility on primary buttons */
+.touch-target {
+  min-height: 48px;
+  min-width: 48px;
+}
+
+/* Ensure Split-Slider gliding on mobile phones without vertical page scroll interference */
+.touch-slider-canvas {
+  touch-action: none !important;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* High-contrast focus rings for accessibility */
+*:focus-visible {
+  outline: 3px solid #80141c;
+  outline-offset: 2px;
+}

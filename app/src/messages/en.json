@@ -1,0 +1,51 @@
+{
+  "app_name": "Bachat Gat Bazaar",
+  "app_subname": "Rural Women SHG Marketplace",
+  "tagline": "Authentic handmade rural Self-Help Group goods delivered directly to your doorstep",
+  "nav": {
+    "shop": "Shop Catalog",
+    "register": "Voice Listing",
+    "studio": "AI Magic Studio",
+    "my_sales": "SHG Ledger",
+    "cart": "Shopping Bag"
+  },
+  "actions": {
+    "confirm": "Yes, this is correct",
+    "reject": "No, let me repeat",
+    "tap_to_speak": "Tap to Speak",
+    "listening": "Listening...",
+    "stop": "Stop",
+    "help": "Listen Help",
+    "add_to_cart": "Add to Cart",
+    "checkout": "Complete Order",
+    "close": "Close",
+    "enhance": "Enhance Photo",
+    "reset": "Reset",
+    "clear": "Clear",
+    "submit": "Save Product",
+    "try_sample": "Use Sample",
+    "listen_product": "Listen Details"
+  },
+  "labels": {
+    "product_name": "Product Name",
+    "product_price": "Price (₹)",
+    "product_quantity": "Unit / Weight",
+    "shg_name": "SHG Name",
+    "location": "Village / District",
+    "ai_estimate_tag": "AI Market Estimate",
+    "ai_estimate_disclaimer": "*This rate is an algorithmic regional estimate based on seasonal APMC ranges. Final price is set directly by the SHG.",
+    "mic_fallback_hint": "If mic fails or is muted, use the large keypad below",
+    "photo_ethics_note": "Ethical Photo Policy: This studio sharpens low-light rural smartphone photos and clarifies packaging shadows without altering the genuine product shape, colors, or label.",
+    "payment_mode": "Transparent Payment: Cash on Delivery or Test Escrow UPI. No bank transfer claimed until integrated."
+  },
+  "speech_prompts": {
+    "ask_product": "What product are you listing today? Speak product name. (e.g., Spicy Mango Pickle or Organic Turmeric)",
+    "ask_price": "What is the selling price in rupees? Speak like 'पन्नास' (50), 'दीडशे' (150) or 'दोनशे वीस' (220).",
+    "confirm_product": "You said: {item}, price {price} rupees. Is this correct? Say 'Yes' or 'No'.",
+    "saved_success": "Congratulations! Your product is now successfully listed in Bachat Gat Bazaar.",
+    "rejected": "Listing cancelled. Let us start again from the beginning.",
+    "help_shop": "In this catalog you can order authentic handmade products crafted by rural women Self Help Groups. Tap the speaker icon to listen to item details.",
+    "help_register": "Here you can register your SHG products using your voice. Press the large red mic button, speak product name and price, then say 'Yes' to confirm.",
+    "help_studio": "This is AI Magic Studio. Enhance smartphone photos taken in dim rural light with auto shadow-lifting and sharpness without altering real labels."
+  }
+}

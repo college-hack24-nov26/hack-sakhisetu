@@ -1,0 +1,6 @@
+{
+  "name": "Bachat Gat Bazaar",
+  "description": "Marathi-first, voice-enabled rural e-commerce platform for women Self-Help Groups (SHGs) with intelligent colloquial voice parsing, fail-safe keypad, and ethical photo enhancement.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
