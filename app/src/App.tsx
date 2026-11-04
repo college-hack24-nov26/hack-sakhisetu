@@ -14,9 +14,9 @@ import { MandiRatesView } from './components/MandiRatesView';
 import { SHGLedger } from './components/SHGLedger';
 import { CartDrawer } from './components/CartDrawer';
 import { ComplianceModal } from './components/ComplianceModal';
+import { FeedbackModal } from './components/FeedbackModal';
 import { INITIAL_PRODUCTS, mapSpokenItemToRealPhoto } from './data/mockProducts';
 import { Product, CartItem, Order, Language } from './types';
-import { ShieldCheck } from 'lucide-react';
 import { AudioService } from './lib/audioService';
 import mrMessages from './messages/mr.json';
 import enMessages from './messages/en.json';
@@ -27,6 +27,7 @@ export default function App() {
   const [activeTab, setActiveTab] = useState<TabType>('home');
   const [successBannerMessage, setSuccessBannerMessage] = useState<string | null>(null);
   const [isComplianceOpen, setIsComplianceOpen] = useState<boolean>(false);
+  const [isFeedbackOpen, setIsFeedbackOpen] = useState<boolean>(false);
 
   // Persisted or initial products
   const [products, setProducts] = useState<Product[]>(() => {
@@ -187,6 +188,7 @@ export default function App() {
         onToggleLang={handleToggleLang}
         cartCount={totalCartCount}
         onOpenCart={() => setIsCartOpen(true)}
+        onOpenFeedback={() => setIsFeedbackOpen(true)}
         onOpenCompliance={() => setIsComplianceOpen(true)}
       />
 
@@ -271,6 +273,11 @@ export default function App() {
       <ComplianceModal
         isOpen={isComplianceOpen}
         onClose={() => setIsComplianceOpen(false)}
+        lang={lang}
+      />
+      <FeedbackModal
+        isOpen={isFeedbackOpen}
+        onClose={() => setIsFeedbackOpen(false)}
         lang={lang}
       />
     </div>

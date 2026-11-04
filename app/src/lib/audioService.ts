@@ -61,7 +61,7 @@ export class AudioService {
   public static speak({
     text,
     lang = 'mr-IN',
-    rate = 0.88,
+    rate = 0.85,
     pitch = 1.0,
     onStart,
     onEnd,
@@ -77,7 +77,9 @@ export class AudioService {
       this.stopSpeaking(); // Cancel any existing audio
 
       // Chunk text into sentences to prevent buffer overflow on low-end MediaTek audio chips
-      const chunks = this.splitProseIntoChunks(text);
+      const isMarathi = lang.toLowerCase().startsWith('mr');
+      const spokenText = isMarathi ? this.prepareMarathiSpeech(text) : text;
+      const chunks = this.splitProseIntoChunks(spokenText);
       if (chunks.length === 0) {
         onEnd?.();
         return;
@@ -87,7 +89,7 @@ export class AudioService {
         chunks,
         index: 0,
         lang,
-        rate,
+        rate: isMarathi ? Math.min(rate, 0.86) : rate,
         pitch,
         onStart,
         onEnd,
@@ -172,12 +174,24 @@ export class AudioService {
       this.cachedVoices = this.synth.getVoices();
     }
     const voices = this.cachedVoices;
+    const normalizedTarget = targetLang.replace(/_/g, '-').toLowerCase();
+    const targetLanguage = normalizedTarget.split('-')[0];
     return (
-      voices.find((v) => v.lang === targetLang || v.lang.replace('_', '-') === targetLang) ||
-      voices.find((v) => v.lang.startsWith(targetLang.slice(0, 2))) ||
-      voices.find((v) => v.lang.startsWith('hi')) ||
+      voices.find((v) => v.lang.replace(/_/g, '-').toLowerCase() === normalizedTarget) ||
+      voices.find((v) => v.lang.replace(/_/g, '-').toLowerCase().startsWith(`${targetLanguage}-`)) ||
+      (targetLanguage === 'mr' ? voices.find((v) => v.lang.toLowerCase().startsWith('hi')) : undefined) ||
       null
     );
+  }
+
+  private static prepareMarathiSpeech(text: string): string {
+    return text
+      .replace(/\bFSSAI\b/gi, 'एफ एस एस ए आय')
+      .replace(/\bFoSCoS\b/gi, 'फॉस्कॉस')
+      .replace(/\bAPMC\b/gi, 'ए पी एम सी')
+      .replace(/\bAI\b/g, 'ए आय')
+      .replace(/\s+/g, ' ')
+      .trim();
   }
 
   /**

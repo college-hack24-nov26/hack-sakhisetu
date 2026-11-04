@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ShoppingBag, Globe, Volume2, VolumeX, ShieldCheck } from 'lucide-react';
+import { ShoppingBag, Globe, Volume2, VolumeX, MessageSquareText, ShieldCheck } from 'lucide-react';
 import { Language } from '../types';
 import { AudioService } from '../lib/audioService';
 
@@ -10,6 +10,7 @@ interface HeaderProps {
   onToggleLang: () => void;
   cartCount: number;
   onOpenCart: () => void;
+  onOpenFeedback: () => void;
   onOpenCompliance?: () => void;
 }
 
@@ -20,6 +21,7 @@ export const Header: React.FC<HeaderProps> = ({
   onToggleLang,
   cartCount,
   onOpenCart,
+  onOpenFeedback,
   onOpenCompliance,
 }) => {
   const isMarathi = lang === 'mr';
@@ -95,7 +97,7 @@ export const Header: React.FC<HeaderProps> = ({
           </div>
         </button>
 
-        {/* Right Controls: Pink Speaker Button + Yellow English Toggle + Cart Button */}
+        {/* Right Controls: Voice Help, Feedback, Language Toggle, and Cart */}
         <div className="flex items-center gap-1 sm:gap-2.5 shrink-0">
           {/* Emerald Audio Help Button with 'मदत (ऐका)' - Exact match to screenshot */}
           <button
@@ -128,6 +130,17 @@ export const Header: React.FC<HeaderProps> = ({
                 <span className="hidden sm:inline whitespace-nowrap">{isMarathi ? 'मदत (ऐका)' : 'Help'}</span>
               </>
             )}
+          </button>
+
+          <button
+            type="button"
+            onClick={onOpenFeedback}
+            className="touch-target shrink-0 inline-flex items-center justify-center gap-1.5 rounded-2xl border border-sky-300 bg-sky-50 px-2 py-2 text-xs font-black text-sky-900 shadow-sm transition-colors hover:bg-sky-100 active:scale-95 sm:px-3 sm:py-2.5 sm:text-sm"
+            title={isMarathi ? 'अभिप्राय द्या' : 'Share feedback'}
+            aria-label={isMarathi ? 'अभिप्राय द्या' : 'Share feedback'}
+          >
+            <MessageSquareText className="h-5 w-5" />
+            <span className="hidden sm:inline">{isMarathi ? 'अभिप्राय' : 'Feedback'}</span>
           </button>
 
           {/* Light Golden-Yellow English/Marathi Toggle - Exact match to screenshot */}
